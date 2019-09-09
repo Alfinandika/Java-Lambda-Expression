@@ -11,12 +11,12 @@ public class LambdaApp {
                 return false;
             }
         };
-
         Predicate<String> predicateLambda = (value)->{
             return value != null;
         };
-
         Predicate<String> predicateLambdaOneLine = (value)-> value != null;
+        System.out.println(predicateLambdaOneLine.test("ya"));
+
 
         //
         Function<String, String> function = new Function<String, String>() {
@@ -25,12 +25,11 @@ public class LambdaApp {
                 return s.toUpperCase();
             }
         };
-
         Function<String, String> functionLambda = (value)->{
             return value.toUpperCase();
         };
-
         Function<String, String> functionLambdaOneLine = (value)-> value.toUpperCase();
+        System.out.println(functionLambdaOneLine.apply("alfin andika"));
 
         //
         Consumer<String> consumer = new Consumer<String>() {
@@ -43,7 +42,8 @@ public class LambdaApp {
         Consumer<String> consumerLambda = (value)->{
             System.out.println("Value");
         };
-        Consumer<String> consumerLambdaOneLine = (value)-> System.out.println("Value");
+        Consumer<String> consumerLambdaOneLine = (value)-> System.out.println(value);
+        consumerLambdaOneLine.accept("Hehehe");
 
         //
         Supplier<String> supplier = new Supplier<String>() {
@@ -58,6 +58,7 @@ public class LambdaApp {
         };
 
         Supplier<String> supplierLambdaOneLine = ()-> "alfin ganteng";
+        System.out.println(supplierLambdaOneLine.get());
 
         //
         BiPredicate<String, String> biPredicate = new BiPredicate<String, String>() {
@@ -66,11 +67,18 @@ public class LambdaApp {
                 return s.equals(s2);
             }
         };
-
         BiPredicate<String, String> biPredicateLambda = (s,s2)->{
             return s.equals(s2);
         };
-
         BiPredicate<String, String> biPredicateLambdaOneLine = (s,s2)-> s.equals(s2);
+        System.out.println(biPredicateLambdaOneLine.test("a", "b"));
+
+        Supplier<String> stringSupplier = ()-> "Alfin Andika";
+        printLambda(stringSupplier);
+        printLambda(()->"Alfin tamvan");
+    }
+
+    public static void printLambda(Supplier<String> supplier){
+        System.out.println(supplier.get());
     }
 }
